@@ -3,7 +3,7 @@ const http = require('http');
 const https = require('https');
 const fs = require('fs');
 const httpPort = 3000;
-const httpsPort = 3001;
+const httpsPort = 5000;
 app = express()
 
 var key = fs.readFileSync(__dirname + '/certsFiles/selfsigned.key');
@@ -15,6 +15,7 @@ var credentials = {
 };
 
 //GET home route
+app.use(express.static(__dirname + '/public'));
 app.get('/', (req, res) => {
    res.send('Hello World.');
 });

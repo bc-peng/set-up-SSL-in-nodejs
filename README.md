@@ -1,33 +1,33 @@
-## This project is an to Set-up SSL in NodeJS and Express using OpenSSL.
-
 *Before starting with the project, please do the following steps:*
 
-1. First clone the repository, then run the following command inside the directory certsFiles.
+## 1. Create a pair of self-signed certificate and key
 
-2. Using OpenSSL, we will generate our key and crt. So, here’s how you could do this:
+Enter `certsFiles` folder and run:
 
-  `sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./selfsigned.key -out selfsigned.crt
-  `
+`sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./selfsigned.key -out selfsigned.crt`
 
-3. After you run the above command, enter the following information:
+After you run the above command, answer the following questions:
 
   ```
   Country Name (2 letter code) [AU]: US
   Email Address []: Your email
   etc
-
   ```
 
-Answer all questions. If all went well, you should see two new files in your certsFiles directory, i.e. selfsigned.key and selfsigned.crt.
+If all went well, you should see two new files in the certsFiles directory, i.e. selfsigned.key and selfsigned.crt.
 
-4. Now start server by running:
+## 2. Install dependencies
 
-  npm start
+`npm install`
 
-Open your favourite browser and visit https://localhost:3000 and you should see Hello World.
+## 3. Start your local server
 
-You may see some SSL warning. That’s because your certificate isn’t issued by any verified organization. What you want to do is, add the crt as an exception to your browser.
+`npm start`
 
-More information How To Create a Self-Signed SSL Certificate for Apache in Ubuntu 16.04 - Visit https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-apache-in-ubuntu-16-04
+Visit https://localhost:5000 and you should see `Hello World`. You might edit `index.js` to change the port number.
 
-Good Day!!
+You may see some SSL warning. That’s because the certificate isn’t issued by any verified organization. What you want to do is, add the crt as an exception to your browser.
+
+## 4. Update loader.js
+
+`public` is the pre-defined root directory from which to serve static assets. The URL of this repo's `loader.js` is `https://localhost:5000/v1/loader.js`.
